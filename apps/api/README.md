@@ -1,4 +1,4 @@
-# API – Wait, Was that 'delete' supposed to come with a 'where' clause?
+# API – 'Look, i can make a query!'
 
 *This is the last backend you'll need to write before your promotion (or burnout, whichever comes first).*
 
