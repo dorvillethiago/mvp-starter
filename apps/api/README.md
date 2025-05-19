@@ -20,11 +20,10 @@
 | -------------- | --------------------------------------- |
 | `bun run dev`  | Starts dev server with hot reload       |
 | `bun run serve`| Runs the app once (non-watch mode)      |
-| `bun run start`| Alias to run the main entry file        |
 
 ## 📂 Structure
 
-Follow whatever you want, but let's start with DDD basic separtion:
+Follow whatever you want, but let's start with DDD basic separation of concerns:
 ```
 src/
 ├── infrastructure/         # Env, seed, db config
