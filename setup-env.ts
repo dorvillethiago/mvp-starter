@@ -34,6 +34,6 @@ for (const examplePath of envExamples) {
 		cpSync(examplePath, targetPath);
 		console.log(`✅ Created .env at: ${targetPath}`);
 	} else {
-		console.log(`⚠️  Skipped (already exists): ${targetPath}`);
+		console.log(`⚠️ Skipped (already exists): ${targetPath}`);
 	}
 }
