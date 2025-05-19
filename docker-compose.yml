@@ -14,8 +14,7 @@ services:
       - app
   web:
     build:
-      context: .
-      dockerfile: apps/web/Dockerfile
+      context: apps/web
     container_name: app-web
     depends_on:
       - api
@@ -25,8 +24,7 @@ services:
       - app
   api:
     build:
-      context: .
-      dockerfile: apps/api/Dockerfile
+      context: apps/api
     container_name: app-api
     depends_on:
       - postgres

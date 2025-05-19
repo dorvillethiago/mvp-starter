@@ -8,4 +8,4 @@ RUN bun install --production
 
 EXPOSE 8000
 
-CMD ["bun", "start"]
+CMD ["bun", "serve"]
