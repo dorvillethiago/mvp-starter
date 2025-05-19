@@ -39,6 +39,7 @@ This monorepo gives you a rock-solid base for fullstack development:
 
 ```bash
 bun install # installs all dependencies in all apps
+bun setup:env # sets up .env files for all apps
 bun dev # starts both frontend and backend in dev mode
 ```
 

@@ -14,7 +14,8 @@
 		"serve": "turbo run serve",
 		"lint": "biome check",
 		"lint:fix": "biome check --write --unsafe",
-		"format": "biome format --fix"
+		"format": "biome format --fix",
+		"setup:env": "bun run setup-env.ts"
 	},
 	"workspaces": ["apps/*"]
 }
