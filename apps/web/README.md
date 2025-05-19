@@ -19,13 +19,10 @@
 
 | Command           | Description                        |
 | ----------------- | ---------------------------------- |
-| `bun install`     | Installs deps                      |
-| `bun run dev`     | Starts local dev server            |
+| `bun dev`     | Starts local dev server            |
 | `bun run build`   | Builds for production              |
-| `bun run preview` | Preview production build           |
-| `bun run gen`     | (Re)generates API clients via Kubb |
-| `bun run lint`    | Lints code with Biome              |
-| `bun run format`  | Formats code with Biome            |
+| `bun preview` | Preview production build           |
+| `bun gen`     | (Re)generates API clients via Kubb |
 
 ## 🗂 Structure
 
