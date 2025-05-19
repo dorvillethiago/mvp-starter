@@ -1,0 +1,45 @@
+services:
+  postgres:
+    image: postgres
+    container_name: app-database
+    environment:
+      POSTGRES_USER: docker
+      POSTGRES_PASSWORD: docker
+      POSTGRES_DB: docker
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - app
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+    container_name: app-web
+    depends_on:
+      - api
+    ports:
+      - "3000:80"
+    networks:
+      - app
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    container_name: app-api
+    depends_on:
+      - postgres
+    ports:
+      - "8000:8000"
+    networks:
+      - app
+
+volumes:
+  pgdata:
+
+networks:
+  app:
+    driver: bridge
+
+name: app

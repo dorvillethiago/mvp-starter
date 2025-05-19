@@ -1,0 +1,22 @@
+{
+	"$schema": "https://turbo.build/schema.json",
+	"tasks": {
+		"//#lint": {},
+		"//#lint:fix": {
+			"cache": false
+		},
+		"build": {
+			"outputs": ["dist/**", ".next/**"]
+		},
+		"setup": {
+			"cache": false
+		},
+		"dev": {
+			"persistent": true,
+			"cache": false
+		},
+		"serve": {
+			"cache": false
+		}
+	}
+}
