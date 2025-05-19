@@ -1,1 +1,12 @@
-{"openapi":"3.0.3","info":{"title":"API","description":"API Documentation","version":"1.0.0"},"paths":{"/":{"get":{"operationId":"getIndex","responses":{"200":{}}}}},"components":{"schemas":{}}}
+{
+	"openapi": "3.0.3",
+	"info": {
+		"title": "API",
+		"description": "API Documentation",
+		"version": "1.0.0"
+	},
+	"paths": {
+		"/": { "get": { "operationId": "getIndex", "responses": { "200": {} } } }
+	},
+	"components": { "schemas": {} }
+}

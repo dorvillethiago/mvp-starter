@@ -9,9 +9,7 @@ import { router } from './presentation/http/router'
 
 const app = new Elysia()
 	.onStart(async () => {
-		const docs = await fetch(
-			`${process.env.URL}/docs/json`,
-		)
+		const docs = await fetch(`${process.env.URL}/docs/json`)
 		const json = await docs.json()
 		fs.writeFile('openapi.json', JSON.stringify(json), (err) => {
 			if (err) console.error(err)

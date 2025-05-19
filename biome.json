@@ -15,6 +15,7 @@
 			"apps/web/src/route-tree.gen.ts",
 			"apps/web/tsconfig.app.json",
 			"apps/web/tsconfig.json",
+			"apps/api/openapi.json",
 			"apps/web/tsconfig.node.json"
 		]
 	},
