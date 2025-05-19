@@ -1,0 +1,8 @@
+apps/api/node_modules
+apps/api/.turbo
+
+apps/web/node_modules
+apps/web/dist
+apps/web/.turbo
+
+.turbo

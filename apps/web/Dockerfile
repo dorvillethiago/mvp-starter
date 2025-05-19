@@ -1,18 +1,21 @@
 # Build the app with bun
-FROM oven/bun:1.1 AS builder
+FROM oven/bun:latest AS builder
 
 WORKDIR /app
 
-COPY . .
+COPY apps/api ./apps/api
+COPY bun.lock .
+COPY package.json package.json
+COPY turbo.json turbo.json
 
-RUN bun install
+RUN bun install --production
 
-RUN bun run build
+RUN bun run build --filter=web
 
 # Serve the app for production
 FROM nginx:stable-alpine
 
-COPY --from=builder /app/dist /usr/share/nginx/html
+COPY --from=builder /app/apps/web/dist /usr/share/nginx/html
 
 EXPOSE 80
 
