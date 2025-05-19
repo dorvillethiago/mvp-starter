@@ -8,8 +8,6 @@
 		"serve": "vite --port 3000",
 		"build": "tsc -b && vite build",
 		"gen": "bunx kubb generate",
-		"lint": "biome lint --fix",
-		"format": "biome format --fix",
 		"preview": "vite preview"
 	},
 	"dependencies": {
@@ -50,7 +48,6 @@
 		"zod": "^3.24.4"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "^1.9.4",
 		"@kubb/cli": "^3.5.11",
 		"@kubb/core": "^3.5.11",
 		"@kubb/plugin-client": "^3.5.11",
