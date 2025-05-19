@@ -1,4 +1,4 @@
-# Web - 'Look i can center a div!'
+# Web - 'Look, I can center a div!'
 
 *This is the only thing you'll need to build a web app that won't have to be rewritten in 6 months or maintained with pain, suffering and tears.*
 

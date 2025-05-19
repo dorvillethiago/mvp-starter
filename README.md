@@ -1,4 +1,4 @@
-# Monorepo – "Just Build the Thing"
+# The Perfect Monorepo! (based on my questionable technical decisions)
 
 *A complete, minimal, type-safe starter for modern web software. No overengineering, no legacy, just velocity.*
 
