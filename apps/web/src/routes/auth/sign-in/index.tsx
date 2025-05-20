@@ -9,12 +9,13 @@ import {
 } from "@/components/ui/card";
 import { LoginForm } from "./-form";
 import { createFileRoute } from "@tanstack/react-router";
+import { generateDocumentTitle } from "@/utils/generate-doc-title";
 
 export const Route = createFileRoute('/auth/sign-in/')({
 	component: Login,
 	head: () => ({
 		meta:  [
-			{ title: `${import.meta.env.VITE_DOCUMENT_TITLE_NAME} - Entrar` },
+			{ title: generateDocumentTitle('Entrar') },
 		]
 	})
 })

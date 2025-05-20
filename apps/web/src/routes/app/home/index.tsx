@@ -1,10 +1,11 @@
+import { generateDocumentTitle } from '@/utils/generate-doc-title'
 import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/app/home/')({
   component: RouteComponent,
   head: () => ({
 		meta:  [
-			{ title: `${import.meta.env.VITE_DOCUMENT_TITLE_NAME} - Início` },
+			{ title: generateDocumentTitle('Início') },
 		]
 	})
 })
