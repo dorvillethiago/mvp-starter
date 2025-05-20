@@ -5,5 +5,9 @@ export const Route = createFileRoute('/app/home/')({
 })
 
 function RouteComponent() {
-  return <>Oi</>
+  return <p className="p-2 italic">
+			Hora de construir algo incrível.
+			<br />
+			Mas se não for — pelo menos faz bem feito.
+		</p>
 }
