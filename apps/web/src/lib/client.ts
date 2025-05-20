@@ -34,7 +34,7 @@ export type ResponseErrorConfig<TData> = {
 export type Result<TData, TError> = [TError, null] | [null, TData]
 
 export const axiosInstance = axios.create({
-	baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
+	baseURL: import.meta.env.VITE_API_URL,
 })
 
 const client = async <TData, _TError, TVariables>(

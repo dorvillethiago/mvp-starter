@@ -11,7 +11,7 @@
 			"apps/web/node_modules/**",
 			"apps/web/dist",
 			"apps/web/.next",
-			"apps/web/@gen/**",
+			"apps/web/src/gen/**",
 			"apps/web/src/route-tree.gen.ts",
 			"apps/web/tsconfig.app.json",
 			"apps/web/tsconfig.json",
