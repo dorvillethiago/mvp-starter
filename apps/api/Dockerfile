@@ -1,14 +1,20 @@
-FROM oven/bun:latest
+FROM oven/bun:latest AS base
 
-WORKDIR /usr/src/app
+FROM base AS builder
+WORKDIR /app
+RUN bun add -g turbo
+COPY . .
+RUN turbo prune api --docker
 
-COPY apps/web ./apps/web
-COPY bun.lock .
-COPY package.json package.json
-COPY turbo.json turbo.json
+FROM base AS installer
+WORKDIR /app
+COPY --from=builder /app/out/json/ .
+COPY --from=builder /app/apps/api/.env /app/apps/api/.env
+RUN bun install
+COPY --from=builder /app/out/full/ .
 
-RUN bun install --production
-
+FROM base AS runner
+WORKDIR /app
+COPY --from=installer /app .
 EXPOSE 8000
-
 CMD ["bun", "serve", "--filter=api"]
