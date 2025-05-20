@@ -6,4 +6,7 @@ export const envValidator = {
 	URL: t.String({ format: 'uri' }),
 
 	DATABASE_URL: t.String({ format: 'uri' }),
+
+	CLERK_SECRET_KEY: t.String(),
+	CLERK_PUBLISHABLE_KEY: t.String(),
 }
