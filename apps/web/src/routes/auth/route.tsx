@@ -1,3 +1,4 @@
+import { ScreenLoader } from '@/components/shared/screen-loader'
 import { useAuth } from '@clerk/clerk-react'
 import { createFileRoute, Navigate, Outlet } from '@tanstack/react-router'
 
@@ -8,8 +9,11 @@ export const Route = createFileRoute('/auth')({
 function LayoutComponent() {
   const { userId, isLoaded } = useAuth()
 
-  if (!isLoaded) return <>Loading...</>
-  if (userId) return <Navigate to='/app/home' />
-
-  return <Outlet />
+  return (
+    <>
+      { isLoaded && userId && <Navigate to="/app/home" />}
+      { isLoaded && !userId && <Outlet />}
+      { !isLoaded && <ScreenLoader/>}
+    </>
+  )
 }
