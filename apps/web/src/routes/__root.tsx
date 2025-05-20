@@ -3,7 +3,7 @@ import { ReactQueryClientProvider } from '@/providers/query-client'
 import { ThemeProvider } from '@/providers/theme'
 import { ClerkProvider } from '@clerk/clerk-react'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import { Outlet, createRootRoute } from '@tanstack/react-router'
+import { HeadContent, Outlet, createRootRoute } from '@tanstack/react-router'
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
 
 export const Route = createRootRoute({
@@ -14,6 +14,7 @@ export const Route = createRootRoute({
 			<ReactQueryClientProvider>
 				<ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
 					<Outlet />
+					<HeadContent />
 					<TanStackRouterDevtools />
 					<ReactQueryDevtools initialIsOpen={false} />
 					<Toaster />
@@ -21,4 +22,9 @@ export const Route = createRootRoute({
 			</ReactQueryClientProvider>
 		</ClerkProvider>
 	),
+	head: () => ({
+		meta:  [
+			{ title: `${import.meta.env.VITE_DOCUMENT_TITLE_NAME} - Início` },
+		]
+	})
 })

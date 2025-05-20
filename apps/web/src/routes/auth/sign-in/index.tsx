@@ -12,6 +12,11 @@ import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute('/auth/sign-in/')({
 	component: Login,
+	head: () => ({
+		meta:  [
+			{ title: `${import.meta.env.VITE_DOCUMENT_TITLE_NAME} - Entrar` },
+		]
+	})
 })
 
 function Login() {
