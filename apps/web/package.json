@@ -50,6 +50,7 @@
 		"zod": "^3.24.4"
 	},
 	"devDependencies": {
+		"@julr/vite-plugin-validate-env": "^2.0.0",
 		"@kubb/cli": "^3.5.11",
 		"@kubb/core": "^3.5.11",
 		"@kubb/plugin-client": "^3.5.11",
