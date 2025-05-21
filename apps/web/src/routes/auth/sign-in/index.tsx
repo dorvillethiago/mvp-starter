@@ -1,4 +1,4 @@
-import { UserRound } from "lucide-react";
+import { UserRound } from 'lucide-react'
 
 import {
 	Card,
@@ -6,18 +6,16 @@ import {
 	CardDescription,
 	CardHeader,
 	CardTitle,
-} from "@/components/ui/card";
-import { LoginForm } from "./-form";
-import { createFileRoute } from "@tanstack/react-router";
-import { generateDocumentTitle } from "@/utils/generate-doc-title";
+} from '@/components/ui/card'
+import { LoginForm } from './-form'
+import { createFileRoute } from '@tanstack/react-router'
+import { generateDocumentTitle } from '@/utils/generate-doc-title'
 
 export const Route = createFileRoute('/auth/sign-in/')({
 	component: Login,
 	head: () => ({
-		meta:  [
-			{ title: generateDocumentTitle('Entrar') },
-		]
-	})
+		meta: [{ title: generateDocumentTitle('Entrar') }],
+	}),
 })
 
 function Login() {
@@ -28,8 +26,12 @@ function Login() {
 					<Card className="mx-auto w-full max-w-md">
 						<CardHeader className="flex flex-col items-center">
 							<UserRound className="size-10 rounded-full bg-accent p-2.5 text-muted-foreground" />
-							<CardTitle className="text-xl">Faça login com seu email</CardTitle>
-							<CardDescription>Digite suas informações para acessar</CardDescription>
+							<CardTitle className="text-xl">
+								Faça login com seu email
+							</CardTitle>
+							<CardDescription>
+								Digite suas informações para acessar
+							</CardDescription>
 						</CardHeader>
 						<CardContent>
 							<div className="flex items-center gap-4 mb-4">
@@ -43,5 +45,5 @@ function Login() {
 				</div>
 			</div>
 		</section>
-	);
+	)
 }

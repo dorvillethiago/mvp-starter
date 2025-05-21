@@ -132,5 +132,5 @@
 }
 
 #root {
-	@apply size-full
+	@apply size-full;
 }

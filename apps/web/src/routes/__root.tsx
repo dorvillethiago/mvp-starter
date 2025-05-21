@@ -8,9 +8,10 @@ import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
 
 export const Route = createRootRoute({
 	component: () => (
-		<ClerkProvider 
+		<ClerkProvider
 			signInFallbackRedirectUrl="/sign-in"
-			publishableKey={import.meta.env.VITE_CLERK_PUBLISHABLE_KEY}>
+			publishableKey={import.meta.env.VITE_CLERK_PUBLISHABLE_KEY}
+		>
 			<ReactQueryClientProvider>
 				<ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
 					<Outlet />
@@ -23,8 +24,6 @@ export const Route = createRootRoute({
 		</ClerkProvider>
 	),
 	head: () => ({
-		meta:  [
-			{ title: `${import.meta.env.VITE_DOCUMENT_TITLE_NAME} - Início` },
-		]
-	})
+		meta: [{ title: `${import.meta.env.VITE_DOCUMENT_TITLE_NAME} - Início` }],
+	}),
 })

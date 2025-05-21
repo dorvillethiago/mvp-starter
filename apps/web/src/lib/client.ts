@@ -37,13 +37,13 @@ export const axiosInstance = axios.create({
 })
 
 function getSessionToken(): string | null {
-  const cookies = document.cookie.split(';').map(c => c.trim())
-  for (const cookie of cookies) {
-    if (cookie.startsWith('__session=')) {
-      return cookie.substring('__session='.length)
-    }
-  }
-  return null
+	const cookies = document.cookie.split(';').map((c) => c.trim())
+	for (const cookie of cookies) {
+		if (cookie.startsWith('__session=')) {
+			return cookie.substring('__session='.length)
+		}
+	}
+	return null
 }
 
 const client = async <TData, _TError, TVariables>(

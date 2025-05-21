@@ -3,17 +3,17 @@ import { useAuth } from '@clerk/clerk-react'
 import { createFileRoute, Navigate, Outlet } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/auth')({
-  component: LayoutComponent,
+	component: LayoutComponent,
 })
 
 function LayoutComponent() {
-  const { userId, isLoaded } = useAuth()
+	const { userId, isLoaded } = useAuth()
 
-  return (
-    <>
-      { isLoaded && userId && <Navigate to="/app/home" />}
-      { isLoaded && !userId && <Outlet />}
-      { !isLoaded && <ScreenLoader/>}
-    </>
-  )
+	return (
+		<>
+			{isLoaded && userId && <Navigate to="/app/home" />}
+			{isLoaded && !userId && <Outlet />}
+			{!isLoaded && <ScreenLoader />}
+		</>
+	)
 }

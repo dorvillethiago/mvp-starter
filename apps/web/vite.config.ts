@@ -20,8 +20,8 @@ export default defineConfig({
 			schema: {
 				VITE_API_URL: Schema.string(),
 				VITE_DOCUMENT_TITLE_NAME: Schema.string(),
-				VITE_CLERK_PUBLISHABLE_KEY: Schema.string()
-			}
+				VITE_CLERK_PUBLISHABLE_KEY: Schema.string(),
+			},
 		}),
 	],
 	resolve: {
