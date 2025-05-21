@@ -20,6 +20,9 @@
 		},
 		"test": {
 			"cache": false
+		},
+		"gen": {
+			"cache": false
 		}
 	}
 }

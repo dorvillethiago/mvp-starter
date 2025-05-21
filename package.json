@@ -15,6 +15,7 @@
 		"serve": "turbo run serve",
 		"lint": "biome check",
 		"test": "turbo run test",
+		"gen": "turbo run gen",
 		"lint:fix": "biome check --write --unsafe",
 		"format": "biome format --fix",
 		"setup:env": "bun run setup-env.ts",
