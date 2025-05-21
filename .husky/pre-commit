@@ -2,5 +2,5 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 bun test
-bun lint
 bun format
+bun lint
