@@ -13,6 +13,7 @@
 * **Swagger (via @elysiajs/swagger)** – Docs you won’t be ashamed of.
 * **bcryptjs** – You know why.
 * **Axios** – When you need to call out, not just serve.
+* **Clerk Backend SDK** – Simple user validation and session verification
 
 ## 🚀 Scripts
 
@@ -26,7 +27,7 @@
 Follow whatever you want, but let's start with DDD basic separation of concerns:
 ```
 src/
-├── infrastructure/         # Env, seed, db config
+├── infrastructure/         # Env, seed, db config, auth
 ├── presentation/         # API routes (Elysia-style handlers)
 └── index.ts        # Entry point
 ```
@@ -36,18 +37,6 @@ src/
 * **ORM**: [Drizzle ORM](https://orm.drizzle.team/)
 * **Migrations**: Use `drizzle-kit` (`bunx drizzle-kit push` or `bunx drizzle-kit generate`)
 * **Type Safety**: Yes, everywhere.
-
-## 🐳 Docker
-
-```bash
-# Build the image
-docker build -t api .
-
-# Run the container
-docker run -p 8000:8000 api
-```
-
-Your API will be available at [http://localhost:8000](http://localhost:8000)
 
 ## ✨ Philosophy
 

@@ -13,6 +13,7 @@
 * **Shadcn UI** – Radix-based component layer (pre-installed, no CLI ceremony).
 * **Recharts** – For dashboards that aren't Excel in disguise.
 * **Kubb** – Typed API clients from OpenAPI (because fetch is pain).
+* **Clerk React** – Fullstack authentication and authorization, session sync via cookies
 * **Biome** – Fast linting/formatting with no extra tooling circus.
 
 ## 🚀 Scripts
@@ -33,20 +34,6 @@ src/
 ├── lib/                 # Config, theme, api, etc
 ├── utils/               # Battle-tested utility functions
 ```
-
-## 🛆 Docker
-
-```bash
-# Build image
-docker build -t web .
-
-# Run app
-docker run -p 3000:80 web
-```
-
-Open [http://localhost:3000](http://localhost:3000)
-
-> SPA routing via TanStack Router is handled by Nginx fallback.
 
 ## ✨ Philosophy
 
