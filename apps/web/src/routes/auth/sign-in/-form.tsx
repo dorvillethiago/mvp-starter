@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { type ClerkAPIError, translateClerkError } from '@/lib/clerk'
 import { useSignIn } from '@clerk/clerk-react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation } from '@tanstack/react-query'
@@ -37,7 +38,10 @@ export function LoginForm() {
 			return setActive({ session: signInAttempt.createdSessionId })
 		},
 		onError: (error) => {
-			toast.error(error.message)
+			const clerkError = error as ClerkAPIError
+			const code = clerkError?.errors?.[0]?.code
+			const message = translateClerkError(code)
+			toast.error(message)
 		},
 		onSuccess: () => {
 			toast.success('Autenticação realizada com sucesso!')
