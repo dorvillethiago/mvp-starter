@@ -1,6 +1,6 @@
-import { Elysia } from 'elysia'
 import { clerkClient } from '@/infrastructure/auth/clerk'
 import { HttpException } from '@/infrastructure/config/error'
+import { Elysia } from 'elysia'
 
 export const ClerkAuth = (app: Elysia) =>
 	app.derive(async function handler({ request }) {

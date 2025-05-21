@@ -4,6 +4,7 @@
 	"devDependencies": {
 		"@biomejs/biome": "^1.9.4",
 		"@types/bcrypt": "^5.0.2",
+		"husky": "^8.0.0",
 		"turbo": "^2.3.3"
 	},
 	"packageManager": "bun@1.2.8",
@@ -16,7 +17,8 @@
 		"test": "turbo run test",
 		"lint:fix": "biome check --write --unsafe",
 		"format": "biome format --fix",
-		"setup:env": "bun run setup-env.ts"
+		"setup:env": "bun run setup-env.ts",
+		"prepare": "husky install"
 	},
 	"workspaces": ["apps/*"]
 }

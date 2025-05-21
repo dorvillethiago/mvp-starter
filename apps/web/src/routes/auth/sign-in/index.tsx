@@ -34,7 +34,7 @@ function Login() {
 							</CardDescription>
 						</CardHeader>
 						<CardContent>
-							<div className='mb-4 flex items-center gap-4'>
+							<div className="mb-4 flex items-center gap-4">
 								<span className="h-px w-full bg-input" />
 								<span className="text-muted-foreground text-xs">ou</span>
 								<span className="h-px w-full bg-input" />

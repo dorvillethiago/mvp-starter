@@ -1,6 +1,6 @@
 import { ScreenLoader } from '@/components/shared/screen-loader'
 import { useAuth } from '@clerk/clerk-react'
-import { createFileRoute, Navigate, Outlet } from '@tanstack/react-router'
+import { Navigate, Outlet, createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/app')({
 	component: LayoutComponent,
