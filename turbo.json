@@ -23,6 +23,9 @@
 		},
 		"gen": {
 			"cache": false
+		},
+		"studio": {
+			"cache": false
 		}
 	}
 }

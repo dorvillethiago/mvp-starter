@@ -5,7 +5,8 @@
 		"dev": "bun run --watch src/index.ts",
 		"serve": "bun run src/index.ts",
 		"start": "bun run src/index.ts",
-		"test": "bun test"
+		"test": "bun test",
+		"studio": "bun drizzle-kit studio"
 	},
 	"dependencies": {
 		"@clerk/backend": "^1.32.3",
