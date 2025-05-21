@@ -17,6 +17,9 @@
 		},
 		"serve": {
 			"cache": false
+		},
+		"test": {
+			"cache": false
 		}
 	}
 }
