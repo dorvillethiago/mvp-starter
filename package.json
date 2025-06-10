@@ -1,5 +1,5 @@
 {
-	"name": "centro-de-fonte-criminal",
+	"name": "mvp-app",
 	"version": "0.1.0",
 	"devDependencies": {
 		"@biomejs/biome": "^1.9.4",
