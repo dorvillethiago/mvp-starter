@@ -95,13 +95,69 @@ docker run -p 8000:8000 api
 
 ```
 .
-├── apps/
-│   ├── web/     # React frontend
-│   └── api/     # Elysia backend
-├── turbo.json   # Pipeline config
-├── bun.lockb    # Bun lockfile
-└── README.md
+├── apps/                    # Monorepo applications
+│   ├── web/                # React frontend
+│   │   ├── src/
+│   │   │   ├── components/ # Organized React components
+│   │   │   │   ├── ui/     # Base components (shadcn/ui)
+│   │   │   │   └── shared/ # Shared application components
+│   │   │   ├── routes/     # File-based routing (TanStack Router)
+│   │   │   │   ├── auth/   # Authentication routes
+│   │   │   │   └── app/    # Protected application routes
+│   │   │   ├── hooks/      # Custom React hooks
+│   │   │   ├── lib/        # Library configurations
+│   │   │   ├── utils/      # Utility functions
+│   │   │   ├── providers/  # Context providers
+│   │   │   └── gen/        # Generated code (Kubb - API client)
+│   │   ├── public/         # Static assets
+│   │   └── Dockerfile      # Web application container
+│   │
+│   └── api/                # Elysia backend (DDD Architecture)
+│       ├── src/
+│       │   ├── application/      # Application layer (Use Cases)
+│       │   │   └── use-cases/    # Application use cases
+│       │   ├── domain/           # Domain layer (Business rules)
+│       │   │   └── entities/     # Domain entities
+│       │   ├── infrastructure/   # Infrastructure layer
+│       │   │   ├── auth/         # Authentication configuration
+│       │   │   ├── config/       # Application configurations
+│       │   │   └── database/     # Database configuration and migrations
+│       │   ├── presentation/     # Presentation layer (HTTP API)
+│       │   │   ├── controllers/  # Route controllers
+│       │   │   ├── middlewares/  # Custom middlewares
+│       │   │   └── http/         # HTTP route configuration
+│       │   └── index.ts          # Application entry point
+│       ├── drizzle.config.ts     # Drizzle ORM configuration
+│       ├── openapi.json          # Generated OpenAPI specification
+│       └── Dockerfile            # API container
+│
+├── .husky/                 # Git hooks for code quality
+├── turbo.json              # Turborepo configuration
+├── docker-compose.yml      # Container orchestration
+├── biome.json              # Linter/formatter configuration
+├── setup-env.ts            # Environment setup script
+└── README.md               # This file
 ```
+
+### 🏗 Architecture Details
+
+#### Frontend (apps/web)
+- **File-based routing**: Routes organized in `routes/` folder following URL structure
+- **Component organization**: Clear separation between base UI components and application-specific components
+- **Generated code**: API client automatically generated via Kubb in `gen/` folder
+- **Modern React patterns**: Custom hooks, contextual providers and organized utilities
+
+#### Backend (apps/api) - DDD (Domain-Driven Design)
+- **Domain Layer**: Pure business entities and rules, no external dependencies
+- **Application Layer**: Use cases that orchestrate application operations
+- **Infrastructure Layer**: Concrete implementations (database, authentication, configurations)
+- **Presentation Layer**: HTTP layer with controllers, middlewares and route definitions
+
+This architecture ensures:
+- ✅ **Clear separation of concerns**
+- ✅ **High testability** for each layer
+- ✅ **Flexibility** for future changes
+- ✅ **Long-term maintainability**
 
 ## ✨ Philosophy
 
@@ -115,5 +171,5 @@ This stack aims for:
 
 ## 🧠 Final Note
 
-If you need more than this to ship an MVP, you’re solving the wrong problem.
-If you keep this clean, you’re building something worth keeping.
+If you need more than this to ship an MVP, you're solving the wrong problem.
+If you keep this clean, you're building something worth keeping.

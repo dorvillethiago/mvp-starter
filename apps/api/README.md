@@ -7,10 +7,9 @@
 * **Elysia** – Lightweight, fast, and actually fun to use.
 * **Drizzle ORM + TypeBox** – SQL with types and no magic.
 * **PostgreSQL** – The one true relational DB.
-* **JWT (via @elysiajs/jwt)** – Auth that doesn’t make you cry.
 * **dotenv + @yolk-oss/elysia-env** – Structured env parsing like a grown-up.
 * **CUID2/UUID** – Predictable or not, your choice.
-* **Swagger (via @elysiajs/swagger)** – Docs you won’t be ashamed of.
+* **Swagger (via @elysiajs/swagger)** – Docs you won't be ashamed of.
 * **bcryptjs** – You know why.
 * **Axios** – When you need to call out, not just serve.
 * **Clerk Backend SDK** – Simple user validation and session verification
@@ -24,13 +23,77 @@
 
 ## 📂 Structure
 
-Follow whatever you want, but let's start with DDD basic separation of concerns:
+Domain-Driven Design (DDD) architecture with clear separation of concerns:
+
 ```
 src/
-├── infrastructure/         # Env, seed, db config, auth
-├── presentation/         # API routes (Elysia-style handlers)
-└── index.ts        # Entry point
+├── application/              # Application Layer
+│   └── use-cases/           # Business use cases and orchestration
+│       └── ...              # Other domain use cases
+│
+├── domain/                  # Domain Layer (Pure Business Logic)
+│   └── entities/            # Domain entities and business rules
+│       ├── user.ts   # User domain entity
+│       └── ...              # Other domain entities
+│
+├── infrastructure/          # Infrastructure Layer
+│   ├── auth/               # Authentication implementations
+│   │   ├── clerk.ts        # Clerk SDK setup
+│   ├── config/             # Application configurations
+│   │   ├── env.ts          # Environment variables
+│   │   └── error.ts          # App-wide errors
+│   └── database/           # Database layer
+│       └── schema.ts       # Database schemas
+│       ├── index.ts        # Database connection
+│       ├── migrations/     # Drizzle migrations
+│       ├── repositories/   # Database repositories
+│
+├── presentation/            # Presentation Layer (HTTP API)
+│   ├── controllers/        # Route handlers and business logic orchestration
+│   │   ├── clerk.ts    # Authentication endpoints
+│   │   ├── hello.ts    # Hello world endpoint
+│   ├── middlewares/        # Custom middlewares
+│   │   ├── clerk.ts        # Authentication middleware
+│   └── http/              # HTTP route configuration
+│       ├── router.ts      # Route definitions
+│       └── webhook.ts     # Webhook definitions
+│
+└── index.ts               # Application entry point
 ```
+
+### 🏗 DDD Layer Responsibilities
+
+#### 🎯 Domain Layer (`domain/`)
+- **Pure business logic** - No external dependencies
+- **Entities** - Core business objects with their rules
+- **Domain rules** - Business validation and constraints
+- **Value objects** - Immutable objects representing concepts
+
+#### 🔄 Application Layer (`application/`)
+- **Use cases** - Orchestrate domain operations
+- **Business workflows** - Coordinate between domain and infrastructure
+- **Application services** - Handle cross-cutting concerns
+- **Command/Query handlers** - Process incoming requests
+
+#### 🔧 Infrastructure Layer (`infrastructure/`)
+- **External integrations** - Database, authentication, third-party APIs
+- **Concrete implementations** - Repository patterns, external services
+- **Configuration** - Environment setup, connection strings
+- **Technical concerns** - Logging, monitoring, caching
+
+#### 🌐 Presentation Layer (`presentation/`)
+- **HTTP API** - REST endpoints and route definitions
+- **Controllers** - Handle HTTP requests/responses
+- **Middlewares** - Cross-cutting HTTP concerns
+- **Validation** - Input validation and sanitization
+
+### 🎯 Benefits of This Architecture
+
+- ✅ **Testability** - Each layer can be tested in isolation
+- ✅ **Maintainability** - Clear boundaries reduce complexity
+- ✅ **Flexibility** - Easy to swap implementations
+- ✅ **Scalability** - Well-organized code scales better
+- ✅ **Domain Focus** - Business logic is protected and centralized
 
 ## 💠 Database
 

@@ -15,6 +15,7 @@
 		"serve": "turbo run serve",
 		"lint": "biome check",
 		"test": "turbo run test",
+		"migrate": "turbo run migrate",
 		"gen": "turbo run gen",
 		"studio": "turbo run studio",
 		"lint:fix": "biome check --write --unsafe",

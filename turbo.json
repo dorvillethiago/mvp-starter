@@ -24,6 +24,9 @@
 		"gen": {
 			"cache": false
 		},
+		"migrate": {
+			"cache": false
+		},
 		"studio": {
 			"cache": false
 		}
