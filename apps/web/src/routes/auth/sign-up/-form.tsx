@@ -15,14 +15,18 @@ export function SignUpForm() {
 	const { signUp, setActive, isLoaded } = useSignUp()
 	const [verificationStep, setVerificationStep] = useState(false)
 
-	const signUpSchema = z.object({
-		email: z.string().email('Endereço de e-mail inválido'),
-		password: z.string().min(8, 'A senha deve ter pelo menos 8 caracteres'),
-		confirmPassword: z.string().min(8, 'A confirmação de senha deve ter pelo menos 8 caracteres'),
-	}).refine((data) => data.password === data.confirmPassword, {
-		message: "As senhas não coincidem",
-		path: ["confirmPassword"],
-	})
+	const signUpSchema = z
+		.object({
+			email: z.string().email('Endereço de e-mail inválido'),
+			password: z.string().min(8, 'A senha deve ter pelo menos 8 caracteres'),
+			confirmPassword: z
+				.string()
+				.min(8, 'A confirmação de senha deve ter pelo menos 8 caracteres'),
+		})
+		.refine((data) => data.password === data.confirmPassword, {
+			message: 'As senhas não coincidem',
+			path: ['confirmPassword'],
+		})
 
 	const verificationSchema = z.object({
 		code: z.string().min(6, 'O código de verificação deve ter 6 dígitos'),
