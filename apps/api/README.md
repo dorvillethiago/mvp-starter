@@ -18,8 +18,10 @@
 
 | Command        | Description                             |
 | -------------- | --------------------------------------- |
-| `bun run dev`  | Starts dev server with hot reload       |
-| `bun run serve`| Runs the app once (non-watch mode)      |
+| `bun run dev`   | Starts dev server with hot reload       |
+| `bun run serve` | Runs the app once (non-watch mode)      |
+| `bun run migrate`| Runs the migrations      |
+| `bun run studio`| Runs the studio      |
 
 ## 📂 Structure
 
