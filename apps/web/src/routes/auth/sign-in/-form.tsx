@@ -56,7 +56,7 @@ export function LoginForm() {
 			className="grid gap-4"
 		>
 			<fieldset className="grid gap-2">
-				<Label htmlFor="email">Email</Label>
+				<Label htmlFor="email">E-mail</Label>
 				<Input
 					{...register('email')}
 					id="email"

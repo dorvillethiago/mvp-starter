@@ -18,6 +18,10 @@ export function SignUpForm() {
 	const signUpSchema = z.object({
 		email: z.string().email('Endereço de e-mail inválido'),
 		password: z.string().min(8, 'A senha deve ter pelo menos 8 caracteres'),
+		confirmPassword: z.string().min(8, 'A confirmação de senha deve ter pelo menos 8 caracteres'),
+	}).refine((data) => data.password === data.confirmPassword, {
+		message: "As senhas não coincidem",
+		path: ["confirmPassword"],
 	})
 
 	const verificationSchema = z.object({
@@ -28,6 +32,7 @@ export function SignUpForm() {
 	type VerificationFormValues = z.infer<typeof verificationSchema>
 
 	const [showPassword, setShowPassword] = useState(false)
+	const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
 	const signUpForm = useForm<SignUpFormValues>({
 		resolver: zodResolver(signUpSchema),
@@ -194,6 +199,36 @@ export function SignUpForm() {
 				{signUpForm.formState.errors.password && (
 					<p className="text-red-600 text-sm">
 						{signUpForm.formState.errors.password.message}
+					</p>
+				)}
+			</fieldset>
+
+			<fieldset className="grid gap-2">
+				<Label htmlFor="confirmPassword">Confirmar Senha</Label>
+				<div className="flex gap-1">
+					<Input
+						{...signUpForm.register('confirmPassword')}
+						id="confirmPassword"
+						type={showConfirmPassword ? 'text' : 'password'}
+						placeholder="********"
+						required
+					/>
+					<Button
+						type="button"
+						variant="outline"
+						className="px-3"
+						onClick={() => setShowConfirmPassword((prev) => !prev)}
+					>
+						{showConfirmPassword ? (
+							<Eye className="size-5" />
+						) : (
+							<EyeClosed className="size-5" />
+						)}
+					</Button>
+				</div>
+				{signUpForm.formState.errors.confirmPassword && (
+					<p className="text-red-600 text-sm">
+						{signUpForm.formState.errors.confirmPassword.message}
 					</p>
 				)}
 			</fieldset>

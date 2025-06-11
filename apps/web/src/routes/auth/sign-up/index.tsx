@@ -4,6 +4,7 @@ import {
 	Card,
 	CardContent,
 	CardDescription,
+	CardFooter,
 	CardHeader,
 	CardTitle,
 } from '@/components/ui/card'
@@ -33,16 +34,18 @@ function SignUp() {
 						</CardHeader>
 						<CardContent>
 							<SignUpForm />
-							<div className="mt-4 text-center text-sm">
-								<span className="text-muted-foreground">Já tem uma conta?</span>
+						</CardContent>
+						<CardFooter>
+							<p className="mx-auto text-muted-foreground text-sm">
+								Já tem uma conta?{' '}
 								<Link
 									to="/auth/sign-in"
-									className="font-medium text-primary hover:underline"
+									className="font-medium text-foreground hover:underline"
 								>
 									Entrar
 								</Link>
-							</div>
-						</CardContent>
+							</p>
+						</CardFooter>
 					</Card>
 				</div>
 			</div>

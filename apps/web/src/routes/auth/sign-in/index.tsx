@@ -4,11 +4,12 @@ import {
 	Card,
 	CardContent,
 	CardDescription,
+	CardFooter,
 	CardHeader,
 	CardTitle,
 } from '@/components/ui/card'
 import { generateDocumentTitle } from '@/utils/generate-doc-title'
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, Link } from '@tanstack/react-router'
 import { LoginForm } from './-form'
 
 export const Route = createFileRoute('/auth/sign-in/')({
@@ -34,13 +35,16 @@ function Login() {
 							</CardDescription>
 						</CardHeader>
 						<CardContent>
-							<div className="mb-4 flex items-center gap-4">
-								<span className="h-px w-full bg-input" />
-								<span className="text-muted-foreground text-xs">ou</span>
-								<span className="h-px w-full bg-input" />
-							</div>
 							<LoginForm />
 						</CardContent>
+						<CardFooter>
+							<p className="text-sm mx-auto text-muted-foreground">
+								Não tem uma conta?{' '}
+								<Link to="/auth/sign-up" className="font-medium text-foreground hover:underline">
+									Crie uma agora
+								</Link>
+							</p>
+						</CardFooter>
 					</Card>
 				</div>
 			</div>
