@@ -1,7 +1,7 @@
 import { cpSync, existsSync, readdirSync, statSync } from 'node:fs'
 import { basename, join } from 'node:path'
 
-const IGNORED_DIRS = new Set(['node_modules', '.git', 'dist', 'build'])
+const IGNORED_DIRS = new Set(['node_modules', '.git', 'dist', 'build', 'out'])
 
 function findEnvExamples(baseDir: string): string[] {
 	const results: string[] = []

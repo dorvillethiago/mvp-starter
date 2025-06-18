@@ -7,7 +7,7 @@
 		"dev": "vite --port 3000",
 		"serve": "vite --port 3000",
 		"build": "tsc -b && vite build",
-		"gen": "bunx kubb generate",
+		"generate": "bunx kubb generate",
 		"preview": "vite preview"
 	},
 	"dependencies": {

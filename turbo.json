@@ -21,7 +21,7 @@
 		"test": {
 			"cache": false
 		},
-		"gen": {
+		"generate": {
 			"cache": false
 		},
 		"migrate": {

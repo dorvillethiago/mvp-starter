@@ -16,11 +16,11 @@
 		"lint": "biome check",
 		"test": "turbo run test",
 		"migrate": "turbo run migrate",
-		"gen": "turbo run gen",
+		"generate": "turbo run generate",
 		"studio": "turbo run studio",
 		"lint:fix": "biome check --write --unsafe",
 		"format": "biome format --fix",
-		"setup:env": "bun run setup-env.ts",
+		"setup": "bun run setup.ts",
 		"prepare": "husky install"
 	},
 	"workspaces": ["apps/*"]
