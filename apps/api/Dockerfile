@@ -9,12 +9,12 @@ RUN turbo prune api --docker
 FROM base AS installer
 WORKDIR /app
 COPY --from=builder /app/out/json/ .
-COPY --from=builder /app/apps/api/.env /app/apps/api/.env
 RUN bun install
 COPY --from=builder /app/out/full/ .
 
 FROM base AS runner
 WORKDIR /app
 COPY --from=installer /app .
+WORKDIR /app/apps/api
 EXPOSE 8000
-CMD ["bun", "serve", "--filter=api"]
+CMD ["bun", "start"]
