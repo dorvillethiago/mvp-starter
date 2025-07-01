@@ -6,3 +6,4 @@ apps/web/dist
 apps/web/.turbo
 
 .turbo
+node_modules
