@@ -7,7 +7,7 @@ import { pluginTs } from '@kubb/plugin-ts'
 export default defineConfig({
 	root: '.',
 	input: {
-		path: '../api/openapi.json',
+		path: 'openapi.json',
 	},
 	output: {
 		path: './src/gen',
