@@ -1,7 +1,3 @@
-# Web - 'Look, i can center a div!'
-
-*This is the only thing you'll need to build a web app that won't have to be rewritten in 6 months or maintained with pain, suffering and tears.*
-
 ## 📁 Stack
 
 * **React 19** – The library.
@@ -23,7 +19,7 @@
 | `bun dev`     | Starts local dev server            |
 | `bun run build`   | Builds for production              |
 | `bun preview` | Preview production build           |
-| `bun gen`     | (Re)generates API clients via Kubb |
+| `bun generate`     | (Re)generates API clients via Kubb |
 
 ## 🗂 Structure
 
@@ -34,17 +30,3 @@ src/
 ├── lib/                 # Config, theme, api, etc
 ├── utils/               # Battle-tested utility functions
 ```
-
-## ✨ Philosophy
-
-This template prioritizes:
-
-* **Type safety** (Zod, TanStack, TS-first design)
-* **Explicit ownership** (no global soup like Zustand)
-* **Maintainability** (clear routing, scoped providers, strong separation)
-* **DX that doesn’t fight you** (but doesn’t enable bad decisions either)
-
-## 🧠 Final Note
-
-If you break this project’s architecture, you deserve the rewrite.
-If you extend it cleanly, you probably deserve a raise.

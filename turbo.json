@@ -27,6 +27,9 @@
 		"migrate": {
 			"cache": false
 		},
+		"make-migrations": {
+			"cache": false
+		},
 		"studio": {
 			"cache": false
 		}
