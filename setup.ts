@@ -46,7 +46,11 @@ const envTargetPath = join(webAppDir, '.env.example')
 
 if (!existsSync(envProductionPath)) {
 	cpSync(envTargetPath, envProductionPath)
-	console.log(`✅ Created .env in web app from .env.production: ${envTargetPath}`)
+	console.log(
+		`✅ Created .env in web app from .env.production: ${envTargetPath}`,
+	)
 } else {
-	console.log(`⚠️ Skipped (web .env.production already exists): ${envTargetPath}`)
+	console.log(
+		`⚠️ Skipped (web .env.production already exists): ${envTargetPath}`,
+	)
 }
