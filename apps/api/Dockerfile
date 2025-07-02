@@ -18,5 +18,5 @@ COPY --from=installer /app .
 WORKDIR /app/apps/api
 EXPOSE 8000
 RUN chmod +x docker-entrypoint.sh
-ENTRYPOINT ["/app/docker-entrypoint.sh"]
+ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["bun", "start"]

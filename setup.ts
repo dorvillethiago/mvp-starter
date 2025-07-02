@@ -27,6 +27,7 @@ function findEnvExamples(baseDir: string): string[] {
 
 const envExamples = findEnvExamples(process.cwd())
 
+// Copy all .env.example files to .env, as before
 for (const examplePath of envExamples) {
 	const targetPath = examplePath.replace('.env.example', '.env')
 
@@ -36,4 +37,16 @@ for (const examplePath of envExamples) {
 	} else {
 		console.log(`⚠️ Skipped (already exists): ${targetPath}`)
 	}
+}
+
+// Additionally, for the web app copy .env.production from .env.example
+const webAppDir = join(process.cwd(), 'apps', 'web')
+const envProductionPath = join(webAppDir, '.env.production')
+const envTargetPath = join(webAppDir, '.env.example')
+
+if (!existsSync(envProductionPath)) {
+	cpSync(envTargetPath, envProductionPath)
+	console.log(`✅ Created .env in web app from .env.production: ${envTargetPath}`)
+} else {
+	console.log(`⚠️ Skipped (web .env.production already exists): ${envTargetPath}`)
 }
