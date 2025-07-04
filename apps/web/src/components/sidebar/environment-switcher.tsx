@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { Check, ChevronsUpDown, GalleryVerticalEnd } from 'lucide-react'
 
 import {
@@ -6,11 +7,7 @@ import {
 	DropdownMenuItem,
 	DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import {
-	SidebarMenu,
-	SidebarMenuButton,
-	SidebarMenuItem,
-} from '@/components/ui/sidebar'
+import { SidebarMenuButton } from '@/components/ui/sidebar'
 
 export function EnvironmentSwitcher({
 	environmentNames,
@@ -20,22 +17,52 @@ export function EnvironmentSwitcher({
 	currentEnvironmentName: string
 }) {
 	return (
-		<SidebarMenu>
-			<SidebarMenuItem>
+		<motion.ul
+			initial="hidden"
+			animate="visible"
+			variants={{
+				hidden: {},
+				visible: { transition: { staggerChildren: 0.3 } },
+			}}
+		>
+			<motion.li
+				variants={{
+					hidden: { opacity: 0, y: -20 },
+					visible: { opacity: 1, y: 0 },
+				}}
+				transition={{
+					type: 'spring',
+					stiffness: 300,
+					damping: 24,
+					duration: 1.2,
+				}}
+				style={{ listStyle: 'none' }}
+			>
 				<DropdownMenu>
 					<DropdownMenuTrigger asChild>
-						<SidebarMenuButton
-							size="lg"
-							className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+						<motion.div
+							initial={{ opacity: 0, y: -20 }}
+							animate={{ opacity: 1, y: 0 }}
+							transition={{
+								type: 'spring',
+								stiffness: 300,
+								damping: 24,
+								duration: 2,
+							}}
 						>
-							<div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-								<GalleryVerticalEnd className="size-4" />
-							</div>
-							<div className="flex flex-col gap-0.5 leading-none">
-								<span className="font-medium">{currentEnvironmentName}</span>
-							</div>
-							<ChevronsUpDown className="ml-auto" />
-						</SidebarMenuButton>
+							<SidebarMenuButton
+								size="lg"
+								className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+							>
+								<div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
+									<GalleryVerticalEnd className="size-4" />
+								</div>
+								<div className="flex flex-col gap-0.5 leading-none">
+									<span className="font-medium">{currentEnvironmentName}</span>
+								</div>
+								<ChevronsUpDown className="ml-auto" />
+							</SidebarMenuButton>
+						</motion.div>
 					</DropdownMenuTrigger>
 					<DropdownMenuContent
 						className="w-(--radix-dropdown-menu-trigger-width)"
@@ -51,7 +78,7 @@ export function EnvironmentSwitcher({
 						))}
 					</DropdownMenuContent>
 				</DropdownMenu>
-			</SidebarMenuItem>
-		</SidebarMenu>
+			</motion.li>
+		</motion.ul>
 	)
 }
