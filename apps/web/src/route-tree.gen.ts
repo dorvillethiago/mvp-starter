@@ -14,6 +14,7 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as AuthRouteImport } from './routes/auth/route'
 import { Route as AppRouteImport } from './routes/app/route'
 import { Route as IndexImport } from './routes/index'
+import { Route as AppHomeRouteImport } from './routes/app/home/route'
 import { Route as AuthSignUpIndexImport } from './routes/auth/sign-up/index'
 import { Route as AuthSignInIndexImport } from './routes/auth/sign-in/index'
 import { Route as AppHomeIndexImport } from './routes/app/home/index'
@@ -38,6 +39,12 @@ const IndexRoute = IndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const AppHomeRouteRoute = AppHomeRouteImport.update({
+  id: '/home',
+  path: '/home',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+
 const AuthSignUpIndexRoute = AuthSignUpIndexImport.update({
   id: '/sign-up/',
   path: '/sign-up/',
@@ -51,9 +58,9 @@ const AuthSignInIndexRoute = AuthSignInIndexImport.update({
 } as any)
 
 const AppHomeIndexRoute = AppHomeIndexImport.update({
-  id: '/home/',
-  path: '/home/',
-  getParentRoute: () => AppRouteRoute,
+  id: '/',
+  path: '/',
+  getParentRoute: () => AppHomeRouteRoute,
 } as any)
 
 // Populate the FileRoutesByPath interface
@@ -81,12 +88,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRoute
     }
-    '/app/home/': {
-      id: '/app/home/'
+    '/app/home': {
+      id: '/app/home'
       path: '/home'
       fullPath: '/app/home'
-      preLoaderRoute: typeof AppHomeIndexImport
+      preLoaderRoute: typeof AppHomeRouteImport
       parentRoute: typeof AppRouteImport
+    }
+    '/app/home/': {
+      id: '/app/home/'
+      path: '/'
+      fullPath: '/app/home/'
+      preLoaderRoute: typeof AppHomeIndexImport
+      parentRoute: typeof AppHomeRouteImport
     }
     '/auth/sign-in/': {
       id: '/auth/sign-in/'
@@ -107,12 +121,24 @@ declare module '@tanstack/react-router' {
 
 // Create and export the route tree
 
-interface AppRouteRouteChildren {
+interface AppHomeRouteRouteChildren {
   AppHomeIndexRoute: typeof AppHomeIndexRoute
 }
 
-const AppRouteRouteChildren: AppRouteRouteChildren = {
+const AppHomeRouteRouteChildren: AppHomeRouteRouteChildren = {
   AppHomeIndexRoute: AppHomeIndexRoute,
+}
+
+const AppHomeRouteRouteWithChildren = AppHomeRouteRoute._addFileChildren(
+  AppHomeRouteRouteChildren,
+)
+
+interface AppRouteRouteChildren {
+  AppHomeRouteRoute: typeof AppHomeRouteRouteWithChildren
+}
+
+const AppRouteRouteChildren: AppRouteRouteChildren = {
+  AppHomeRouteRoute: AppHomeRouteRouteWithChildren,
 }
 
 const AppRouteRouteWithChildren = AppRouteRoute._addFileChildren(
@@ -137,7 +163,8 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/app': typeof AppRouteRouteWithChildren
   '/auth': typeof AuthRouteRouteWithChildren
-  '/app/home': typeof AppHomeIndexRoute
+  '/app/home': typeof AppHomeRouteRouteWithChildren
+  '/app/home/': typeof AppHomeIndexRoute
   '/auth/sign-in': typeof AuthSignInIndexRoute
   '/auth/sign-up': typeof AuthSignUpIndexRoute
 }
@@ -156,6 +183,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/app': typeof AppRouteRouteWithChildren
   '/auth': typeof AuthRouteRouteWithChildren
+  '/app/home': typeof AppHomeRouteRouteWithChildren
   '/app/home/': typeof AppHomeIndexRoute
   '/auth/sign-in/': typeof AuthSignInIndexRoute
   '/auth/sign-up/': typeof AuthSignUpIndexRoute
@@ -168,6 +196,7 @@ export interface FileRouteTypes {
     | '/app'
     | '/auth'
     | '/app/home'
+    | '/app/home/'
     | '/auth/sign-in'
     | '/auth/sign-up'
   fileRoutesByTo: FileRoutesByTo
@@ -177,6 +206,7 @@ export interface FileRouteTypes {
     | '/'
     | '/app'
     | '/auth'
+    | '/app/home'
     | '/app/home/'
     | '/auth/sign-in/'
     | '/auth/sign-up/'
@@ -216,7 +246,7 @@ export const routeTree = rootRoute
     "/app": {
       "filePath": "app/route.tsx",
       "children": [
-        "/app/home/"
+        "/app/home"
       ]
     },
     "/auth": {
@@ -226,9 +256,16 @@ export const routeTree = rootRoute
         "/auth/sign-up/"
       ]
     },
+    "/app/home": {
+      "filePath": "app/home/route.tsx",
+      "parent": "/app",
+      "children": [
+        "/app/home/"
+      ]
+    },
     "/app/home/": {
       "filePath": "app/home/index.tsx",
-      "parent": "/app"
+      "parent": "/app/home"
     },
     "/auth/sign-in/": {
       "filePath": "auth/sign-in/index.tsx",
