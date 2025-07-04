@@ -5,7 +5,6 @@ import * as React from 'react'
 import {
 	SidebarGroup,
 	SidebarGroupContent,
-	SidebarMenu,
 	SidebarMenuButton,
 	SidebarMenuItem,
 } from '@/components/ui/sidebar'
@@ -39,8 +38,8 @@ export function NavSecondary({
 						<motion.li
 							key={item.title}
 							variants={{
-								hidden: { opacity: 0, y: 20 },
-								visible: { opacity: 1, y: 0 },
+								hidden: { opacity: 0, x: -20 },
+								visible: { opacity: 1, x: 0 },
 							}}
 							transition={{
 								type: 'spring',

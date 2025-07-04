@@ -5,6 +5,7 @@ import { ClerkProvider } from '@clerk/clerk-react'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { HeadContent, Outlet, createRootRoute } from '@tanstack/react-router'
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
+import { motion } from 'framer-motion'
 
 export const Route = createRootRoute({
 	component: () => (
@@ -14,7 +15,15 @@ export const Route = createRootRoute({
 		>
 			<ReactQueryClientProvider>
 				<ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-					<Outlet />
+					<motion.div
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						exit={{ opacity: 0 }}
+						transition={{ duration: 1 }}
+						className="size-full"
+					>
+						<Outlet />
+					</motion.div>
 					<HeadContent />
 					<TanStackRouterDevtools />
 					<ReactQueryDevtools initialIsOpen={false} />

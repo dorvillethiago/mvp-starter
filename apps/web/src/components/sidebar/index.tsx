@@ -15,7 +15,7 @@ import { NavUser } from './nav-user'
 const home = [
 	{
 		name: 'Home',
-		url: '...',
+		url: '/app/home',
 		icon: BarChart2,
 	},
 ]
@@ -23,12 +23,12 @@ const home = [
 const example = [
 	{
 		name: 'Charts',
-		url: '...',
+		url: '/app/test',
 		icon: FileBarChart,
 	},
 	{
 		name: 'Notifications',
-		url: '...',
+		url: '/app/test',
 		icon: Bell,
 	},
 ]

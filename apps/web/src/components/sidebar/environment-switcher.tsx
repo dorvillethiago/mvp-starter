@@ -27,8 +27,8 @@ export function EnvironmentSwitcher({
 		>
 			<motion.li
 				variants={{
-					hidden: { opacity: 0, y: -20 },
-					visible: { opacity: 1, y: 0 },
+					hidden: { opacity: 0, x: -20 },
+					visible: { opacity: 1, x: 0 },
 				}}
 				transition={{
 					type: 'spring',
@@ -41,8 +41,8 @@ export function EnvironmentSwitcher({
 				<DropdownMenu>
 					<DropdownMenuTrigger asChild>
 						<motion.div
-							initial={{ opacity: 0, y: -20 }}
-							animate={{ opacity: 1, y: 0 }}
+							initial={{ opacity: 0, x: -20 }}
+							animate={{ opacity: 1, x: 0 }}
 							transition={{
 								type: 'spring',
 								stiffness: 300,
