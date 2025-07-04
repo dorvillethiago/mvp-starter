@@ -1,3 +1,4 @@
+import { FadeIn } from '@/lib/motion/fade-in'
 import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/app/test/')({
@@ -5,5 +6,5 @@ export const Route = createFileRoute('/app/test/')({
 })
 
 function RouteComponent() {
-	return <div>Hello "/app/test/"!</div>
+	return <FadeIn>Hello "/app/test/"!</FadeIn>
 }

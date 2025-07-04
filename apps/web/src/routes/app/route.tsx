@@ -74,30 +74,28 @@ function LayoutComponent() {
 										</BreadcrumbList>
 									</Breadcrumb>
 								</motion.div>
-								<AnimatePresence>
-									<motion.div
-										initial={{
-											opacity: 0,
-											x: 10,
-										}}
-										transition={{
-											type: 'spring',
-											stiffness: 300,
-											damping: 24,
-											duration: 1,
-										}}
-										animate={{
-											opacity: 1,
-											x: 0,
-										}}
-										exit={{
-											opacity: 0,
-											x: 10,
-										}}
-									>
-										<Outlet />
-									</motion.div>
-								</AnimatePresence>
+								<motion.div
+									initial={{
+										opacity: 0,
+										x: 10,
+									}}
+									transition={{
+										type: 'spring',
+										stiffness: 300,
+										damping: 24,
+										duration: 1,
+									}}
+									animate={{
+										opacity: 1,
+										x: 0,
+									}}
+									exit={{
+										opacity: 0,
+										x: 10,
+									}}
+								>
+									<Outlet />
+								</motion.div>
 							</SidebarInset>
 						</SidebarProvider>
 						<Outlet />

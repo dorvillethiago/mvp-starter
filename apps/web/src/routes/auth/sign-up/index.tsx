@@ -8,6 +8,7 @@ import {
 	CardHeader,
 	CardTitle,
 } from '@/components/ui/card'
+import { FadeIn } from '@/lib/motion/fade-in'
 import { generateDocumentTitle } from '@/utils/generate-doc-title'
 import { Link, createFileRoute } from '@tanstack/react-router'
 import { SignUpForm } from './-form'
@@ -21,7 +22,7 @@ export const Route = createFileRoute('/auth/sign-up/')({
 
 function SignUp() {
 	return (
-		<section className="relative grid h-full place-items-center py-32">
+		<FadeIn className="relative grid h-full place-items-center py-32">
 			<div className="container mx-auto">
 				<div className="flex flex-col gap-4">
 					<Card className="mx-auto w-full max-w-md">
@@ -49,6 +50,6 @@ function SignUp() {
 					</Card>
 				</div>
 			</div>
-		</section>
+		</FadeIn>
 	)
 }
