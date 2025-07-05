@@ -39,7 +39,7 @@ function LayoutComponent() {
 						<SidebarProvider>
 							<AppSidebar />
 							<SidebarInset>
-								<ScrollArea className="p-3 lg:p-6 h-screen">
+								<ScrollArea className="h-screen p-3 lg:p-6">
 									<motion.div
 										initial={{
 											opacity: 0,
