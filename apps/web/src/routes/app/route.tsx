@@ -8,6 +8,7 @@ import {
 	BreadcrumbPage,
 	BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb'
+import { ScrollArea } from '@/components/ui/scroll-area'
 import {
 	SidebarInset,
 	SidebarProvider,
@@ -37,65 +38,67 @@ function LayoutComponent() {
 					>
 						<SidebarProvider>
 							<AppSidebar />
-							<SidebarInset className="p-3 lg:p-6">
-								<motion.div
-									initial={{
-										opacity: 0,
-										x: -10,
-									}}
-									transition={{
-										type: 'spring',
-										stiffness: 300,
-										damping: 24,
-										duration: 3,
-									}}
-									animate={{
-										opacity: 1,
-										x: 0,
-									}}
-									className="flex items-center gap-2 pb-4"
-								>
-									<SidebarTrigger />
-									<Breadcrumb>
-										<BreadcrumbList>
-											<BreadcrumbItem>
-												<BreadcrumbLink href="/">Home</BreadcrumbLink>
-											</BreadcrumbItem>
-											<BreadcrumbSeparator />
-											<BreadcrumbItem>
-												<BreadcrumbLink href="/components">
-													Components
-												</BreadcrumbLink>
-											</BreadcrumbItem>
-											<BreadcrumbSeparator />
-											<BreadcrumbItem>
-												<BreadcrumbPage>Breadcrumb</BreadcrumbPage>
-											</BreadcrumbItem>
-										</BreadcrumbList>
-									</Breadcrumb>
-								</motion.div>
-								<motion.div
-									initial={{
-										opacity: 0,
-										x: 10,
-									}}
-									transition={{
-										type: 'spring',
-										stiffness: 300,
-										damping: 24,
-										duration: 1,
-									}}
-									animate={{
-										opacity: 1,
-										x: 0,
-									}}
-									exit={{
-										opacity: 0,
-										x: 10,
-									}}
-								>
-									<Outlet />
-								</motion.div>
+							<SidebarInset>
+								<ScrollArea className="p-3 lg:p-6 h-screen">
+									<motion.div
+										initial={{
+											opacity: 0,
+											x: -10,
+										}}
+										transition={{
+											type: 'spring',
+											stiffness: 300,
+											damping: 24,
+											duration: 3,
+										}}
+										animate={{
+											opacity: 1,
+											x: 0,
+										}}
+										className="flex items-center gap-2 pb-4"
+									>
+										<SidebarTrigger />
+										<Breadcrumb>
+											<BreadcrumbList>
+												<BreadcrumbItem>
+													<BreadcrumbLink href="/">Home</BreadcrumbLink>
+												</BreadcrumbItem>
+												<BreadcrumbSeparator />
+												<BreadcrumbItem>
+													<BreadcrumbLink href="/components">
+														Components
+													</BreadcrumbLink>
+												</BreadcrumbItem>
+												<BreadcrumbSeparator />
+												<BreadcrumbItem>
+													<BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+												</BreadcrumbItem>
+											</BreadcrumbList>
+										</Breadcrumb>
+									</motion.div>
+									<motion.div
+										initial={{
+											opacity: 0,
+											x: 10,
+										}}
+										transition={{
+											type: 'spring',
+											stiffness: 300,
+											damping: 24,
+											duration: 1,
+										}}
+										animate={{
+											opacity: 1,
+											x: 0,
+										}}
+										exit={{
+											opacity: 0,
+											x: 10,
+										}}
+									>
+										<Outlet />
+									</motion.div>
+								</ScrollArea>
 							</SidebarInset>
 						</SidebarProvider>
 						<Outlet />
