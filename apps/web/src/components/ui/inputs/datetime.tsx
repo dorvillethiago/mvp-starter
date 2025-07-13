@@ -118,6 +118,7 @@ export function DateTimeInput({
 							<Input
 								type="time"
 								step="1"
+								disabled={!value}
 								value={getTimeString(value)}
 								onChange={handleTimeChange}
 								className="appearance-none pl-8 [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none"
