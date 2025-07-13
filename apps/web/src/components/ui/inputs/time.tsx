@@ -42,7 +42,7 @@ export function TimeInput({
 			<Clock2Icon className="pointer-events-none absolute left-2.5 size-4 select-none text-muted-foreground" />
 			<Input
 				type="time"
-				step="1"
+				step="60"
 				value={getTimeString(value)}
 				onChange={handleTimeChange}
 				disabled={disabled}
