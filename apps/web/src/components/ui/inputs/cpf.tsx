@@ -1,4 +1,4 @@
-import { Input } from '@/components/ui/inputs'
+import { Input } from '@/components/ui/input'
 import { type ChangeEvent, type ComponentProps, useState } from 'react'
 
 interface CPFInputProps extends Omit<ComponentProps<'input'>, 'onChange'> {

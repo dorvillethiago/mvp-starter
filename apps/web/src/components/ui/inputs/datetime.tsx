@@ -4,7 +4,7 @@ import * as React from 'react'
 import { Button } from '@/components/ui/button'
 import { Calendar } from '@/components/ui/calendar'
 import { Card, CardContent, CardFooter } from '@/components/ui/card'
-import { Input } from '@/components/ui/inputs'
+import { Input } from '@/components/ui/input'
 import {
 	Popover,
 	PopoverContent,

@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/inputs'
+import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { type ClerkAPIError, translateClerkError } from '@/lib/clerk'
 import { useSignIn } from '@clerk/clerk-react'
