@@ -127,7 +127,7 @@ const CountrySelect = ({
 								}
 							}, 0)
 						}}
-						placeholder="Search country..."
+						placeholder="..."
 					/>
 					<CommandList>
 						<ScrollArea ref={scrollAreaRef} className="h-72">
