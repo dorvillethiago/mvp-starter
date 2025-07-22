@@ -30,6 +30,7 @@ interface ComboboxProps {
 	value?: string
 	onValueChange?: (value: string) => void
 	onSearch?: (value: string) => void
+	search?: string
 	disabled?: boolean
 	className?: string
 	isLoading?: boolean
@@ -43,6 +44,7 @@ export function Combobox({
 	value,
 	onValueChange,
 	onSearch,
+	search,
 	disabled = false,
 	className,
 	isLoading = false,
@@ -96,6 +98,7 @@ export function Combobox({
 						placeholder={searchPlaceholder}
 						className="h-9"
 						onValueChange={onSearch}
+						value={search}
 					/>
 					<CommandList>
 						<CommandEmpty>
