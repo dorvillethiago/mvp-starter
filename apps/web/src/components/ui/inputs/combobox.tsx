@@ -29,6 +29,7 @@ interface ComboboxProps {
 	emptyMessage?: string
 	value?: string
 	onValueChange?: (value: string) => void
+	onSearch?: (value: string) => void
 	disabled?: boolean
 	className?: string
 	isLoading?: boolean
@@ -41,6 +42,7 @@ export function Combobox({
 	emptyMessage = 'Nenhuma opção encontrada.',
 	value,
 	onValueChange,
+	onSearch,
 	disabled = false,
 	className,
 	isLoading = false,
@@ -88,9 +90,13 @@ export function Combobox({
 					<ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
 				</Button>
 			</PopoverTrigger>
-			<PopoverContent className="w-full p-0">
-				<Command>
-					<CommandInput placeholder={searchPlaceholder} className="h-9" />
+			<PopoverContent align="start" className="w-full p-0">
+				<Command shouldFilter={!onSearch}>
+					<CommandInput
+						placeholder={searchPlaceholder}
+						className="h-9"
+						onValueChange={onSearch}
+					/>
 					<CommandList>
 						<CommandEmpty>
 							{isLoading ? 'Carregando cidades...' : emptyMessage}
