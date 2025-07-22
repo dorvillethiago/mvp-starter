@@ -31,6 +31,7 @@ interface ComboboxProps {
 	onValueChange?: (value: string) => void
 	onSearch?: (value: string) => void
 	search?: string
+	filter?: (value: string, search: string) => number
 	disabled?: boolean
 	className?: string
 	isLoading?: boolean
@@ -45,6 +46,7 @@ export function Combobox({
 	onValueChange,
 	onSearch,
 	search,
+	filter,
 	disabled = false,
 	className,
 	isLoading = false,
@@ -93,7 +95,7 @@ export function Combobox({
 				</Button>
 			</PopoverTrigger>
 			<PopoverContent align="start" className="w-full p-0">
-				<Command shouldFilter={!onSearch}>
+				<Command filter={filter} shouldFilter={!onSearch}>
 					<CommandInput
 						placeholder={searchPlaceholder}
 						className="h-9"
