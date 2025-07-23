@@ -1,4 +1,4 @@
-import { ScreenLoader } from '@/components/shared/screen-loader'
+import { Loader } from '@/components/shared/loaders'
 import { AppSidebar } from '@/components/sidebar'
 import {
 	Breadcrumb,
@@ -106,7 +106,7 @@ function LayoutComponent() {
 				)}
 			</AnimatePresence>
 
-			{!isLoaded && <ScreenLoader />}
+			{!isLoaded && <Loader variant="full-size" />}
 			{isLoaded && !userId && <Navigate to="/auth/sign-in" />}
 		</>
 	)
