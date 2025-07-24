@@ -50,7 +50,7 @@ export function DateRangePicker({
 							format(value.from, 'dd/MM/yyyy')
 						)
 					) : (
-						<span>{placeholder}</span>
+						<span className='text-muted-foreground'>{placeholder}</span>
 					)}
 				</Button>
 			</PopoverTrigger>
