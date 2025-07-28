@@ -9,11 +9,19 @@ import { router } from './presentation/http/router'
 
 const app = new Elysia()
 	.onStart(async () => {
-		const docs = await fetch(`${process.env.URL}/docs/json`)
-		const json = await docs.json()
-		fs.writeFile('../web/openapi.json', JSON.stringify(json), (err) => {
-			if (err) console.error(err)
-		})
+		if (!process.env.FRONTEND_URL) {
+			console.warn(
+				'WARNING: `FRONTEND_URL` environment variable is not set. CORS may fail.',
+			)
+		}
+
+		if (process.env.ENV === 'dev') {
+			const docs = await fetch(`${process.env.URL}/docs/json`)
+			const json = await docs.json()
+			fs.writeFile('../web/openapi.json', JSON.stringify(json), (err) => {
+				if (err) console.error(err)
+			})
+		}
 	})
 	.use(cors())
 	.onError(errorHandler)
