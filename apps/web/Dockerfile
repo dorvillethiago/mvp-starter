@@ -11,7 +11,7 @@ WORKDIR /app
 COPY --from=builder /app/out/json/ .
 RUN bun install
 COPY --from=builder /app/out/full/ .
-COPY --from=builder /app/apps/web/.env.production /app/apps/web/.env
+COPY --from=builder /app/.env /app/apps/web/.env
 RUN bunx turbo run generate
 RUN bunx turbo run build --filter=web
 
