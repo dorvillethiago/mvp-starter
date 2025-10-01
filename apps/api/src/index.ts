@@ -3,9 +3,9 @@ import cors from '@elysiajs/cors'
 import swagger from '@elysiajs/swagger'
 import { env } from '@yolk-oss/elysia-env'
 import { Elysia } from 'elysia'
-import { envValidator } from './infrastructure/config/env'
-import { errorHandler } from './infrastructure/config/error'
-import { router } from './presentation/http/router'
+import { router } from './http/router'
+import { envValidator } from './infra/config/env'
+import { errorHandler } from './infra/config/error'
 
 const app = new Elysia()
 	.onStart(async () => {
@@ -37,7 +37,7 @@ const app = new Elysia()
 				},
 			},
 			scalarConfig: {
-				theme: 'purple',
+				theme: 'deepSpace',
 			},
 		}),
 	)

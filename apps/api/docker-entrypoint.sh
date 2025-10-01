@@ -1,6 +1,6 @@
 #!/bin/sh
 set -e
 
-bunx drizzle-kit migrate
+bun run migrate-deploy
 
 exec "$@"

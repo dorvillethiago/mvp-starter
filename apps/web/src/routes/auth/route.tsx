@@ -1,4 +1,4 @@
-import { ScreenLoader } from '@/components/shared/screen-loader'
+import { Loader } from '@/components/shared/loaders'
 import { FadeIn } from '@/lib/motion/fade-in'
 import { useAuth } from '@clerk/clerk-react'
 import { Navigate, Outlet, createFileRoute } from '@tanstack/react-router'
@@ -23,7 +23,7 @@ function LayoutComponent() {
 				)}
 			</AnimatePresence>
 
-			{!isLoaded && <ScreenLoader />}
+			{!isLoaded && <Loader variant="full-size" />}
 		</>
 	)
 }

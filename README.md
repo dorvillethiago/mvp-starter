@@ -22,7 +22,7 @@
 > Located in `apps/api/`
 
 * **Elysia** – Fast, expressive Bun-native backend
-* **Drizzle ORM + TypeBox** – SQL-first with strong typing
+* **Prisma ORM + TypeBox** – Robust ORM with strong typing
 * **PostgreSQL** – Just works
 * **Swagger** – Docs you can share without shame
 * **Clerk Backend SDK** – Simple user validation and session verification
@@ -38,7 +38,9 @@
 ```bash
 bun install # installs all dependencies in all apps
 bun setup # sets up .env files for all apps
-bun generate # generates front-end services for consuming the API
+bun generate # generates api types and database resources + front-end api consuming services
+docker compose up -d postgres # sets up your dev database
+bun migrate # sets up your database so it's ready to go
 bun dev # starts both frontend and backend in dev mode
 ```
 
@@ -58,7 +60,7 @@ or else the web app won't render properly.
 ### Backend
 
 * Secured via **Clerk Backend SDK**.
-* Middleware `ClerkAuth` verifies incoming requests:
+* Middleware `useClerkAuth` verifies incoming requests:
 
   * Extracts session token from `Authorization` header or cookies.
   * Validates session and retrieves the full user object.
@@ -67,9 +69,7 @@ or else the web app won't render properly.
 Example usage in API:
 
 ```ts
-app.use(ClerkAuth)
-
-app.get('/api/profile', ({ clerkUser }) => {
+app.use(useClerkAuth).get('/api/profile', ({ clerkUser }) => {
   return `Hello, ${user.firstName}`
 })
 ```

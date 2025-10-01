@@ -49,13 +49,6 @@ export function NavGroup({
 				}}
 			>
 				{data.map((item) => {
-					const location = useLocation()
-					const params = useParams({ from: '/app/$unit' })
-					const unit = params.unit
-
-					const actualUrl = item.url.replace('$unit', unit)
-					const isActive = location.pathname === actualUrl
-
 					return (
 						<motion.li
 							key={item.name}
@@ -74,16 +67,11 @@ export function NavGroup({
 							<SidebarMenuItem>
 								<SidebarMenuButton
 									asChild
-									disabled={isActive}
 									className={cn(
 										'transition-colors disabled:opacity-100 aria-disabled:opacity-100',
-										{
-											'bg-primary text-primary-foreground hover:bg-primary hover:text-primary':
-												isActive,
-										},
 									)}
 								>
-									<Link to={actualUrl}>
+									<Link to={item.url}>
 										<item.icon />
 										<span>{item.name}</span>
 									</Link>

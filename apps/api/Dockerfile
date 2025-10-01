@@ -17,6 +17,7 @@ WORKDIR /app
 COPY --from=installer /app .
 WORKDIR /app/apps/api
 EXPOSE 8000
+RUN bun run generate
 RUN chmod +x docker-entrypoint.sh
 ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["bun", "start"]

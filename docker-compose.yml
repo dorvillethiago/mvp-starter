@@ -17,6 +17,8 @@ services:
       context: .
       dockerfile: apps/web/Dockerfile
     container_name: app-web
+    env_file:
+      - apps/web/.env
     depends_on:
       - api
     ports:
@@ -28,6 +30,8 @@ services:
       context: .
       dockerfile: apps/api/Dockerfile
     container_name: app-api
+    env_file:
+      - apps/api/.env
     depends_on:
       - postgres
     ports:
