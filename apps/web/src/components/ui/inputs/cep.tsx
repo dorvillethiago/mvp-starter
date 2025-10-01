@@ -1,5 +1,5 @@
 import { type ComponentProps, useState } from 'react'
-import { Input } from './input'
+import { Input } from '../input'
 
 interface CepInputProps extends Omit<ComponentProps<'input'>, 'onChange'> {
 	onChange?: (value: string) => void

@@ -8,8 +8,7 @@ import {
 	SidebarMenuItem,
 } from '@/components/ui/sidebar'
 import { cn } from '@/lib/utils'
-import { Link, useParams } from '@tanstack/react-router'
-import { useLocation } from '@tanstack/react-router'
+import { Link } from '@tanstack/react-router'
 
 export function NavGroup({
 	name,
