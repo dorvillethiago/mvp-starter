@@ -67,6 +67,7 @@ export function SignUpForm() {
 		onSuccess: () => {
 			toast.success('Conta criada! Verifique seu e-mail para confirmação.')
 			setVerificationStep(true)
+			signUpForm.reset()
 		},
 	})
 
