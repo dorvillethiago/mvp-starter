@@ -1,6 +1,3 @@
-import { Check, ChevronsUpDown } from 'lucide-react'
-import * as React from 'react'
-
 import { Button } from '@/components/ui/button'
 import {
 	Command,
@@ -16,6 +13,8 @@ import {
 	PopoverTrigger,
 } from '@/components/ui/popover'
 import { cn } from '@/lib/utils'
+import { Check, ChevronsUpDown } from 'lucide-react'
+import * as React from 'react'
 
 interface Option {
 	value: string
@@ -54,11 +53,25 @@ export function Combobox({
 	const [open, setOpen] = React.useState(false)
 	const [selectedValue, setSelectedValue] = React.useState(value || '')
 
+	const [cachedSelectedOption, setCachedSelectedOption] =
+		React.useState<Option | null>(null)
+
 	React.useEffect(() => {
 		if (value !== undefined) {
 			setSelectedValue(value)
 		}
 	}, [value])
+
+	React.useEffect(() => {
+		if (selectedValue && options.length > 0) {
+			const option = options.find((opt) => opt.value === selectedValue)
+			if (option) {
+				setCachedSelectedOption(option)
+			}
+		} else if (!selectedValue) {
+			setCachedSelectedOption(null)
+		}
+	}, [selectedValue, options])
 
 	const handleSelect = (currentValue: string) => {
 		const newValue = currentValue === selectedValue ? '' : currentValue
@@ -67,9 +80,20 @@ export function Combobox({
 		onValueChange?.(newValue)
 	}
 
-	const selectedOption = options.find(
-		(option) => option.value === selectedValue,
-	)
+	const selectedOption =
+		options.find((option) => option.value === selectedValue) ||
+		cachedSelectedOption
+
+	const displayOptions = React.useMemo(() => {
+		if (
+			cachedSelectedOption &&
+			selectedValue === cachedSelectedOption.value &&
+			!options.some((opt) => opt.value === cachedSelectedOption.value)
+		) {
+			return [cachedSelectedOption, ...options]
+		}
+		return options
+	}, [options, cachedSelectedOption, selectedValue])
 
 	return (
 		<Popover open={open} onOpenChange={setOpen}>
@@ -78,7 +102,7 @@ export function Combobox({
 					variant="outline"
 					aria-expanded={open}
 					className={cn(
-						'w-full justify-between font-normal',
+						'w-full justify-between bg-white font-normal',
 						{
 							'text-muted-foreground': !selectedOption,
 						},
@@ -96,18 +120,20 @@ export function Combobox({
 			</PopoverTrigger>
 			<PopoverContent align="start" className="w-full p-0">
 				<Command filter={filter} shouldFilter={!onSearch}>
-					<CommandInput
-						placeholder={searchPlaceholder}
-						className="h-9"
-						onValueChange={onSearch}
-						value={search}
-					/>
+					{onSearch && (
+						<CommandInput
+							placeholder={searchPlaceholder}
+							className="h-9"
+							onValueChange={onSearch}
+							value={search}
+						/>
+					)}
 					<CommandList>
 						<CommandEmpty>
-							{isLoading ? 'Carregando cidades...' : emptyMessage}
+							{isLoading ? 'Carregando...' : emptyMessage}
 						</CommandEmpty>
 						<CommandGroup>
-							{options.map((option) => (
+							{displayOptions.map((option) => (
 								<CommandItem
 									key={option.value}
 									value={option.value}
