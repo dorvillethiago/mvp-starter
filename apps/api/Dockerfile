@@ -1,23 +1,27 @@
-FROM oven/bun:latest AS base
-
-FROM base AS builder
+FROM oven/bun:latest AS builder
 WORKDIR /app
-RUN bun add -g turbo
+
 COPY . .
-RUN turbo prune api --docker
 
-FROM base AS installer
-WORKDIR /app
-COPY --from=builder /app/out/json/ .
-RUN bun install
-COPY --from=builder /app/out/full/ .
+RUN bun install --frozen-lockfile
 
-FROM base AS runner
+FROM oven/bun:latest AS runner
 WORKDIR /app
-COPY --from=installer /app .
+
+COPY --from=builder /app/node_modules ./node_modules
+
+COPY --from=builder /app/package.json ./package.json
+COPY --from=builder /app/bun.lock ./bun.lock
+COPY --from=builder /app/tsconfig.json ./tsconfig.json
+
+COPY --from=builder /app/apps/api ./apps/api
+
+COPY --from=builder /app/packages ./packages
+
 WORKDIR /app/apps/api
+
 EXPOSE 8000
-RUN bun run generate
 RUN chmod +x docker-entrypoint.sh
-ENTRYPOINT ["docker-entrypoint.sh"]
+ENTRYPOINT ["./docker-entrypoint.sh"]
+
 CMD ["bun", "start"]
