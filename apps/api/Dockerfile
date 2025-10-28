@@ -16,8 +16,6 @@ COPY --from=builder /app/tsconfig.json ./tsconfig.json
 
 COPY --from=builder /app/apps/api ./apps/api
 
-COPY --from=builder /app/packages ./packages
-
 WORKDIR /app/apps/api
 
 EXPOSE 8000
