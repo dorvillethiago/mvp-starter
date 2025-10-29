@@ -15,8 +15,9 @@ const invalidTokenError = new HttpException({
 export const useClerkAuth = (app: Elysia) =>
 	app.derive(async function handler({ request }) {
 		try {
+			const clonedRequest = request.clone()
 			const { isSignedIn, toAuth } =
-				await clerkClient.authenticateRequest(request)
+				await clerkClient.authenticateRequest(clonedRequest)
 			if (!isSignedIn) throw notSignedInError
 			const auth = toAuth()
 			if (!auth.userId) throw notSignedInError
